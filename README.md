@@ -1,169 +1,173 @@
-# Labenu Music Awards
+# Labenu Music Awards 🏆
 
-## Primeiros Passos
+<a id="en-readme"></a>
+### English | [Português](#pt-readme)
+Back-end project developed in Labenu's bootcamp \
+LAMA is a REST API to manage the Labenu Music Awards, a festival with several bands for my class graduation! 📻
 
-* Clonar este repositório
-* Executar `npm install` para adicionar as dependências
-* Criar um arquivo .env na raiz do projeto e preencher as chaves a seguir com os valores apropriados:
-   ```
-   DB_HOST = 
-   DB_USER = 
-   DB_PASSWORD = 
-   DB_NAME = 
-   JWT_KEY = 
-   JWT_EXPIRES_IN = 
-   BCRYPT_COST = 
-   ```
-* Executar `npm run setup` para adicionar as tabelas ao banco de dados (em caso de sucesso, o servidor já estará pronto para receber requisições)
-----------------------
-# Endpoints
+<a name="pt-menu"></a>
+- [Documentation](#documentacao)
+- [Getting Started](#steps)
+- [Available Scripts](#en-scripts)
+- [Features](#features)
+- [Libraries and Frameworks](#libs)
 
-## User Endpoints
 
-## **POST** Sign Up
+<a id="documentation"></a>
+## ✦ Documentation
+- [Postman](https://documenter.getpostman.com/view/13242152/TzCJgVJY)
+- [Endpoints](ENDPOINTS.md)
 
-**Path:** `/user/signup`
+<a id="steps"></a>
+## ✦ Getting Started
+1- clone this repository
 
-**Body:**
-
-```json
-{
-    "name": "Astrodev",
-    "email": "astro@dev.com",
-    "password": "bestboss",
-    "role": "ADMIN"
-}
+2- run this command
 ```
-**Body de resposta:** token
-
-## **POST** Login
-
-**Path:** `/user/login`
-
-**Body:**
-
-```json
-{
-    "email": "dualipa@future.com",
-    "password": "orgulhooms"
-}
+npm install
 ```
-**Body de resposta:** token
-
----------------------
-
-## Bandas 
-
-## **POST** Register Band
-
-**Path:** `/band/register`
-
-**Headers**
+3- create .env file on the root directory of the project with this data:
 ```
-authorization: "token de autenticação"
+// your database
+
+DB_HOST =
+DB_USER =
+DB_PASSWORD = 
+DB_DATABASE_NAME = 
+
+//your key and time expire preferences
+
+JWT_KEY =
+JWT_EXPIRES_IN = 
+
+//your cost preference
+
+BCRYPT_COST = 
 ```
+4- run this command
 
-**Body:**
-
-```json
-{
-    "name": "Bananas in PJs",
-    "genre": "Indie",
-    "responsible": "Laranja"
-}
 ```
-
-
-## **GET** Band By Id or Name
-
-**Path:** `/band`
-
-**Query Param**: id/nome da banda
-
-**Body de Resposta:**
-
-```json
-{
-    "id": "40dc5f96-4c46-4d6d-a26b-58df09806a1d",
-    "name": "Taylor Swift",
-    "genre": "Taylor Swift",
-    "responsible": "Taylor Swift"
-}
+npm run setup
 ```
----------------------
-
-## Shows
-
-## **POST** Create Show
-
-**Path:** `/show/create`
-
-**Headers**
+5- now this one
 ```
-authorization: "token de autenticação"
+npm start
 ```
+6- YOU'RE ICE CREAM IS READY!!!
 
-**Body:**
+<a id="en-scripts"></a>
+## ✦ Available Scripts
+* `npm run setup` to create tables
+* `npm run start` to run the application
+* `npm run dev` to run the application with hot reload
+* `npm run test` to test the application
 
-```json
-{
-    "bandId": "b988ee4a-55ee-45d5-8e1e-63b9606e5128",
-    "weekDay": "Saturday",
-    "startTime": 22,
-    "endTime": 23
-}
+<a id="features"></a>
+## ✦ Features
+* Sign up
+* Login
+* Register a band
+* Create a show
+* Search for a band by its id or name
+* Ver os shows de determinado dia
+
+<a id="libs"></a>
+## ✦ Libraries and Frameworks:
+* cors
+* express
+* knex
+* mysql
+* dotenv
+* uuid
+* jsonwebtoken
+* bcryptjs
+* jest
+
+*Developed with 💜 by Nicole Zolnier*
+
+-------
+<a id="pt-readme"></a>
+### [English](#en-readme) | Português
+Projeto back-end desenvolvido no bootcamp da Labenu. \
+LAMA é uma API REST para gerenciar o Labenu Music Awards, um festival com várias bandas para a formatura da minha turma! 📻
+
+<a name="pt-menu"></a>
+- [Documentação](#documentacao)
+- [Primeiros Passos](#passos)
+- [Scripts Disponíveis](#pt-scripts)
+- [Funcionalidades](#funcionalidades)
+- [Bibliotecas e Frameworks](#bibliotecas)
+
+
+<a id="documentacao"></a>
+## ✦ Documentação
+- [Postman](https://documenter.getpostman.com/view/13242152/TzCJgVJY)
+- [Endpoints](ENDPOINTS.md)
+
+<a id="passos"></a>
+## ✦ Primeiros Passos
+1- clone ese repositório
+
+2- rode o comando abaixo
 ```
-
-
-## **GET** Show By Day
-
-**Path:** `/show`
-
-**Query Param**: dia (friday, saturday, sunday)
-
-**Body de Resposta:**
-
-```json
-{
-    "result": [
-        {
-            "id": "14b4a2a3-ee79-404e-b38c-c4c4db2b007d",
-            "weekDay": "SATURDAY",
-            "startTime": 14,
-            "endTime": 15,
-            "bandId": "0a6728a8-424f-4aa4-923f-979d4f69c45a"
-        },
-        {
-            "id": "d2491c8d-4d46-43c1-a2c5-3437c196bf68",
-            "weekDay": "SATURDAY",
-            "startTime": 16,
-            "endTime": 18,
-            "bandId": "40dc5f96-4c46-4d6d-a26b-58df09806a1d"
-        },
-        {
-            "id": "fb154c33-9ac4-4be7-8439-d945398383df",
-            "weekDay": "SATURDAY",
-            "startTime": 19,
-            "endTime": 20,
-            "bandId": "61c4aae5-01fa-4282-bc3d-226fbc4e9df8"
-        },
-        {
-            "id": "15c1ac4c-a9d8-40b4-aa64-24e623e255ce",
-            "weekDay": "SATURDAY",
-            "startTime": 20,
-            "endTime": 21,
-            "bandId": "7f678d03-3370-42f4-bd99-8d682dc2fa3e"
-        },
-        {
-            "id": "d8642a51-2c38-4a1c-93ab-99a27ba106f0",
-            "weekDay": "SATURDAY",
-            "startTime": 22,
-            "endTime": 23,
-            "bandId": "b988ee4a-55ee-45d5-8e1e-63b9606e5128"
-        }
-    ]
-}
+npm install
 ```
------------------------------
-### Desenvolvido com 💙️ por
-Nicole Zolnier :)
+3- crie um arquivo .env na raíz do projeto com esses dados:
+```
+//dados do seu banco
+
+DB_HOST =
+DB_USER =
+DB_PASSWORD = 
+DB_DATABASE_NAME = 
+
+//suas preferências para key e expire
+
+JWT_KEY =
+JWT_EXPIRES_IN = 
+
+//suas preferências de cost
+
+BCRYPT_COST = 
+```
+4- rode esse comando:
+
+```
+npm run setup
+```
+5- agora esse
+```
+npm start
+```
+6- TÁ PRONTO O SORVETINHOOOOO!
+
+<a id="pt-scripts"></a>
+## ✦ Scripts Disponíveis:
+* `npm run setup` para criar as tabelas
+* `npm run start` para rodar a aplicação
+* `npm run dev` para iniciar a aplicação com hot reload
+* `npm run test` para testar a aplicação
+
+<a id="funcionalidades"></a>
+## ✦ Funcionalidades:
+* Cadastro
+* Login
+* Registrar uma banda
+* Criar um show
+* Procurar por uma banda com base no id ou nome
+* Ver os shows de determinado dia
+
+<a id="bibliotecas"></a>
+## ✦ Bibliotecas e Frameworks:
+* cors
+* express
+* knex
+* mysql
+* dotenv
+* uuid
+* jsonwebtoken
+* bcryptjs
+* jest
+
+*Desenvolvido com 💜 por Nicole Zolnier*
+
